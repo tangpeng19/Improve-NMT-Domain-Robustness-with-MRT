@@ -30,7 +30,7 @@ where <a href="https://www.codecogs.com/eqnedit.php?latex=$\alpha$" target="_bla
 
 Experiments
 -----------
-- Main results
+#### 1. Main results
 
 We execute domain robustness experiments on both German-to-English and German-to-Romansh language pairs, following the data and preprocessing as [M&uuml;ller et al., (2019)](https://arxiv.org/abs/1911.03109).
 
@@ -67,7 +67,7 @@ Results shows that MRT increases average out-of-domain (OOD) BLEU by 0.7-0.8 com
 
 *Average BLEU and standard deviation on in-domain and out-of-domain test sets for models trained on OPUS (DE→EN) and Allegra (DE→RM).*
 
-- Hallucination analysis
+#### 2. Hallucination analysis
 
 As shown in table below, manual evaluation of hallucination translation (100 samples from each system) indicates that hallucinations are more pronounced in out-of-domain test set (25%) than in in-domain (1%), MRT reduces this by 24% (relative).
 
@@ -95,7 +95,7 @@ As shown in table below, manual evaluation of hallucination translation (100 sam
 
 *Proportion of hallucinations and BLEU on out-of-domain and in-domain test sets. DE→EN OPUS*
 
-- Uncertainty Analysis
+#### 3. Uncertainty Analysis
 
 We further investigate the posterior distribution of NMT model by visualizing model's per-token probability assigned to each token of (1) a random sampled target sentence in the training set, <a href="https://www.codecogs.com/eqnedit.php?latex=\widehat{y}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\widehat{y}" title="\widehat{y}" /></a>, (2) the reference target sentence, <a href="https://www.codecogs.com/eqnedit.php?latex=y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?y" title="y" /></a>, given source sentence, <a href="https://www.codecogs.com/eqnedit.php?latex=x" target="_blank"><img src="https://latex.codecogs.com/gif.latex?x" title="x" /></a> in the test sets.
 
@@ -108,7 +108,7 @@ In the figure, *distracctor* denotes the random smapled sentences and *reference
 
 MRT tends to increase the model’s certainty at later time steps (the uncertainty of the baseline is due to label smoothing), but importantly, the increase is sharper for the reference translations than for the distractors. The direct comparison shows a widening gap in certainty between the reference and distractor sentences. In other words, producing a hallucination will incur a small penalty at each timestep (compared to the reference), presumably due to a higher reliance on the source signal, lessening the risk of error propagation and hallucinations. 
 
-- Beam size analysis
+#### 4. Beam size analysis
 
 Based on error proporation observed above, we suspect that beam size problem would be related to exposure bias (and corresponding error propagation). Then, MRT would mitigate the problem. We evaluate BLEU score and hallucinations with beam sizes of 1,4 and 50 over two models. 
 
